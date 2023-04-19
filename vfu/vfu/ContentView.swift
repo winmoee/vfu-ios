@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    //create boolean variable and pass in boolean variable to other views
+    //use content view as a main hub to call other views
     var body: some View {
         ScrollView {
             VStack {
@@ -52,7 +53,10 @@ struct ContentView: View {
 
         } // end of VStack
     }
+    
 }
+
+
 
 struct BoxColumn: View {
     let header: String

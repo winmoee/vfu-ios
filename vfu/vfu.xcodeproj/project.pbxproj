@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0683EC29EF6DDB00DB7B2E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0683EB29EF6DDB00DB7B2E /* HomeView.swift */; };
 		4781247E29EC98A300BE063C /* vfuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4781247D29EC98A300BE063C /* vfuApp.swift */; };
 		4781248029EC98A300BE063C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4781247F29EC98A300BE063C /* ContentView.swift */; };
 		4781248229EC98A400BE063C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4781248129EC98A400BE063C /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0683EB29EF6DDB00DB7B2E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4781247A29EC98A300BE063C /* vfu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vfu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4781247D29EC98A300BE063C /* vfuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vfuApp.swift; sourceTree = "<group>"; };
 		4781247F29EC98A300BE063C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				4781247F29EC98A300BE063C /* ContentView.swift */,
 				4781248129EC98A400BE063C /* Assets.xcassets */,
 				4781248329EC98A400BE063C /* Preview Content */,
+				3D0683EB29EF6DDB00DB7B2E /* HomeView.swift */,
 			);
 			path = vfu;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D0683EC29EF6DDB00DB7B2E /* HomeView.swift in Sources */,
 				4781248029EC98A300BE063C /* ContentView.swift in Sources */,
 				4781247E29EC98A300BE063C /* vfuApp.swift in Sources */,
 			);
