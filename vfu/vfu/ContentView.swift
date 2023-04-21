@@ -12,6 +12,7 @@ struct ContentView: View {
     //use content view as a main hub to call other views
     var body: some View {
         ScrollView {
+            
             VStack {
                 HStack {
                     VStack {

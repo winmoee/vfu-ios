@@ -2,144 +2,352 @@
 //  AboutView.swift
 //  vfu
 //
-//  Created by Amanda Sayaseng on 4/19/23.
+//  Created by Eric Nguyen and Amanda Sayaseng on 4/19/23.
 //
 
 import Foundation
 import SwiftUI
 
 struct AboutView: View {
+    let briefText = "    Envisioned by Myanmar students who are currently taking part in the democracy movement from within the country, the Virtual Federal University provides a portal for alternative teaching and learning for faculty and students who refuse to cooperate with the Myanmar junta, as well as to those facing persecution by the regime."  +  "\n\n" + "    Content will include lectures and training on broad-based topics and skills relevant to Myanmar youth from the highlands to the plains. Intellectuals around the world will contribute to teaching on a pro-Bono basis in solidarity with the Myanmar democracy movement. The Virtual Federal University will provide online lessons in audio, video, and textual formats on a mobile friendly platform. Educational materials will also be delivered to local audiences inside Myanmar via radio and TV."
+    let visionText = "We, students and educators, converge here on this portal in a collective struggle towards Myanmar federal democracy. We will hand over this place to stakeholders of the physical federal universities when they emerge in the mountains from Razis of the north to the Yomas in the west, riverbanks of Salween in the east and south, and floodplains of Irrawaddy in the heartland."
+    let missionText = "The Virtual Federal University aims to provide a free, quality education for Myanmar federal democracy. We will act as a facilitator for peer-to-peer teaching and learning and to collaborate with independent universities and schools in liberated and federated areas such as Kachin, Karen, Mon, Shan, and Karenni as well as autonomous universities from the cities such as Yangon and Mandalay."
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
-                    //brief about the vfu section
-                    BoxRow(header: "BRIEF ABOUT THE VFU", description: "Envisioned by Myanmar students who are currently taking part in the democracy movement from within the country, the Virtual Federal University provides a portal for alternative teaching and learning for faculty and students who refuse to cooperate with the Myanmar junta, as well as to those facing persecution by the regime. Second paragraph... ")
-                    Spacer()
-                    Image("Artboard_6")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 170)
-                }.padding()
-                HStack {
-                    //our vision section
-                    
-                    //add image
-                    Image("Artboard_7")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 170)
-                    Spacer()
-                    BoxRow(header: "OUR VISION", description: "We, students and educators, converge here on this portal in a collective struggle towards Myanmar federal democracy. We will hand over this place to stakeholders of the physical federal universities when they emerge in the mountains from Razis of the north to the Yomas in the west, riverbanks of Salween in the east and south, and floodplains of Irrawaddy in the heartland.")
-                }.padding()
-                HStack {
-                    //our mission section
-                    BoxRow(header: "OUR MISSION", description: "The Virtual Federal University aims to provide a free, quality education for Myanmar federal democracy. We will act as a facilitator for peer-to-peer teaching and learning and to collaborate with independent universities and schools in liberated and federated areas such as Kachin, Karen, Mon, Shan, and Karenni as well as autonomous universities from the cities such as Yangon and Mandalay.")
-                    Spacer()
-                    //add image
-                    Image("Artboard_8")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 170)
-                }.padding()
-                ZStack {
-                    //faculty member header
-                    Rectangle()
-                        .fill(Color.purple)
-                        .frame(height: 60)
-                    Text("FACULTY MEMBER")
-                    font(.system(size: 20, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding()
-                }.padding()
-                HStack {
-                    Spacer()
-                    Spacer()
-                    BoxFaculty(header: "Faculty Name", description: "Brief Bio")
-                    Spacer()
-                    Spacer()
-                    BoxFaculty(header: "Faculty Name", description: "Brief Bio")
-                    Spacer()
-                    Spacer()
-                    BoxFaculty(header: "Faculty Name", description: "Brief Bio")
-                    Spacer()
-                    Spacer()
-                }
+                MenuRow()
+                TextSection(switchSide: true, heights: 500, title: "BRIEF ABOUT THE VFU", img: "briefImage", text: briefText)
+                TextSection(switchSide: false, heights: 240, title: "OUR VISION", img: "visionImage", text: visionText)
+                TextSection(switchSide: true, heights: 240, title:"OUR MISSION", img: "target", text: missionText)
+                facultySection()
+                successStory()
                 Spacer()
-                HStack {
-                    //second row of faculty info
-                    Spacer()
-                    Spacer()
-                    BoxFaculty(header: "Faculty Name", description: "Brief Bio")
-                    Spacer()
-                    Spacer()
-                    BoxFaculty(header: "Faculty Name", description: "Brief Bio")
-                    Spacer()
-                    Spacer()
-                    BoxFaculty(header: "Faculty Name", description: "Brief Bio")
-                    Spacer()
-                    Spacer()
-                }.padding()
-                ZStack {
-                    //Success story header
-                    Rectangle()
-                        .fill(Color.purple)
-                        .frame(height: 60)
-                    Text("SUCCESS STORY")
-                    font(.system(size: 20, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding()
-                }.padding()
-                HStack {
-                    //Success story info
-                }
             }
         }
     }
 }
 
-struct BoxFaculty: View {
-    let header: String
-    let description: String
-    var body: some View {
-        VStack {
-            facultyView(Color: .white, header: header, description: description)
-            Spacer()
-            Text(description)
-                .foregroundColor(.black)
-                .font(.system(size: 16, weight: .regular))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-    }
-}
-struct facultyView: View {
-    let color: Color
-    let header: String
-    let description: String
+struct TextSection: View {
+    let titleColor = Color("titleblue")
+    @State var color = Color("fadedpurple")
+    @State var height: CGFloat = 0
+    @State var showText = false
+    @State var increment: CGFloat = 1
+    let switchSide: Bool
+    let heights: Int
+    let title: String
+    let img: String
+    let text: String
     
     var body: some View {
         VStack {
-            Spacer()
-            Text(header)
-                .foregroundColor(.purple)
-                .font(.system(size: 24, weight: .bold))
-            Spacer()
-            Text(description)
-                .foregroundColor(.purple)
-                .font(.system(size: 16, weight: .regular))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            Spacer()
+            if switchSide {
+                HStack {
+                    VStack {
+                        Text(title)
+                            .foregroundColor(titleColor)
+                            .font(.system(size: 28))
+                            .fontWeight(.heavy)
+                            .padding(.bottom, 8)
+                            .padding(.top, 7)
+                            .multilineTextAlignment(.center)
+                        Button(action: {
+                            if (color == Color("titleblue")) {
+                                color = Color("fadedpurple")
+                            } else {
+                                color = Color("titleblue")
+                            }
+                            for _ in 1...heights {
+                                withAnimation(.linear(duration:0.2).delay(0.0)) {
+                                    height += increment
+                                }
+                            }
+                            increment = -increment
+                            withAnimation(Animation.spring().delay(0.2)) {
+                                showText = !showText
+                            }
+                            
+                        }, label: {
+                            Image(systemName: "chevron.compact.down")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40)
+                                .foregroundColor(titleColor)
+                        })
+                    }
+                    
+                    Image(img)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150)
+                }
+                .frame(width: 400, height: 200)
+            } else {
+                HStack {
+                    Image(img)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150)
+                    VStack {
+                        Text(title)
+                            .foregroundColor(titleColor)
+                            .font(.system(size: 28))
+                            .fontWeight(.heavy)
+                            .padding(.bottom, 8)
+                            .padding(.top, 7)
+                            .multilineTextAlignment(.center)
+                        Button(action: {
+                            if (color == Color("titleblue")) {
+                                color = Color("fadedpurple")
+                            } else {
+                                color = Color("titleblue")
+                            }
+                            for _ in 1...heights {
+                                withAnimation(.linear(duration:0.2).delay(0.0)) {
+                                    height += increment
+                                }
+                            }
+                            increment = -increment
+                            withAnimation(Animation.spring().delay(0.2)) {
+                                showText = !showText
+                            }
+                            
+                        }, label: {
+                            Image(systemName: "chevron.compact.down")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40)
+                                .foregroundColor(titleColor)
+                        })
+                    }
+                }
+                .frame(width: 400, height: 200)
+            }
+            VStack {
+                Spacer()
+                    .frame(width: 400, height: 25)
+                if showText {
+                    Text(text)
+                    Spacer()
+                }
+            }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+            .background(color)
+            .frame(width: 400, height: height)
+            .foregroundColor(.white)
         }
-        .background(color)
-        .cornerRadius(5)
-        .frame(maxWidth: 70, maxHeight: 60)
     }
 }
 
+struct helper {
+    let nameOf: String
+}
 
+struct facultySection: View {
+    let names = [helper(nameOf: "DR. STAN JAGGER"), helper(nameOf: "DR. ROSE METRO"), helper(nameOf: "NATALIE BRINHAM"), helper(nameOf: "DR. KHATTA"), helper(nameOf: "DR. THARAPHI THAN"), helper(nameOf: "MAW TUN")]
+    
+    var body: some View {
+        VStack {
+            header(headTitle: "FACULTY MEMBERS")
+            Spacer()
+                .frame(height: 10)
+            ForEach(names, id: \.nameOf) {
+                memberPanel(name: $0.nameOf, bio: "Brief Bio", acadbg: "Academic Background: -----", profbg: "Professional Background: -----", motivation: "What motivated them to contribute in VFU: -----")
+            }
+        }
+        .frame(width: 400)
+        .background(Color("fadedpurple"))
+        
+    }
+    
+}
+
+struct memberPanel: View {
+    let name: String
+    let bio: String
+    let acadbg: String
+    let profbg: String
+    let motivation: String
+    var darkbluish = Color("titleblue")
+    var shadowpurp = Color("shadowpurple")
+    
+    @State var cardOpacity = 1.0
+    @State var cardNum = 0
+    
+    var body: some View {
+        let info = [
+            VStack {
+                Text(name)
+                    .font(.system(size: 24))
+                    .foregroundColor(darkbluish)
+            },
+            VStack {
+                Text(acadbg + "\n\n" + profbg)
+                    .font(.system(size: 18))
+                    .foregroundColor(darkbluish)
+            },
+            VStack {
+                Text(bio)
+                    .font(.system(size: 18))
+                    .foregroundColor(darkbluish)
+            },
+            VStack {
+                Text(motivation)
+                    .font(.system(size: 18))
+                    .foregroundColor(darkbluish)
+            }
+        ]
+        
+        HStack {
+            if cardNum != 0 {
+                Button(action: {
+                    fadeOutFadeIn(increment: -1)
+                }, label: {
+                    Image(systemName: "chevron.compact.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 10)
+                        .foregroundColor(darkbluish)
+                        .padding(.leading, 20)
+                })
+            }
+            Spacer()
+        
+            info[cardNum]
+                .opacity(cardOpacity)
+                    
+            Spacer()
+            
+            if cardNum != 3 {
+                Button(action: {
+                    fadeOutFadeIn(increment: 1)
+                }, label: {
+                    Image(systemName: "chevron.compact.right")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 10)
+                        .foregroundColor(darkbluish)
+                        .padding(.trailing, 20)
+                })
+            }
+            
+        }
+        .frame(width: 350, height: 120)
+        .border(Color("titleblue"), width: 3)
+        .background(.white)
+        .shadow(color: shadowpurp, radius: 15, x: 1, y: 1)
+        Spacer()
+            .frame(height: 10)
+    }
+    
+    func fadeOutFadeIn(increment: Int) {
+        for _ in 1...10 {
+            withAnimation(.linear(duration:0.2).delay(0.0)) {
+                cardOpacity -= 0.1
+            }
+        }
+        withAnimation(.linear(duration:0.1).delay(0.2)) {
+            cardNum += increment
+        }
+        for _ in 1...10 {
+            withAnimation(.linear(duration:0.2).delay(0.3)) {
+                cardOpacity += 0.1
+            }
+        }
+        
+    }
+}
+
+struct successStory: View {
+    var darkbluish = Color("titleblue")
+    var shadowpurp = Color("shadowpurple")
+
+    var body: some View {
+        VStack {
+            header(headTitle: "SUCCESS STORY")
+                .padding(.bottom, 10)
+            VStack {
+                ZStack {
+                    Image("quote")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:25)
+                        .position(x:27, y:23)
+                    Image("quote")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:25)
+                        .rotationEffect(.radians(.pi))
+                        .position(x:322, y:196)
+                    VStack {
+                        Text("On-ground teaching")
+                            .foregroundColor(darkbluish)
+                            .bold()
+                            .font(.system(size: 18))
+                            .padding(.top, 20)
+                            .padding(.bottom, 1)
+                        Text("Karenni Praru “Karenni Praru” which means “Karenni youths” in Karenni language is a training camp situated in the liberated area within Karenni state")
+                            .foregroundColor(darkbluish)
+                            .padding(.bottom, 20)
+                            .padding(.leading, 20)
+                            .padding(.trailing, 20)
+                            .multilineTextAlignment(.center)
+                    }
+                    .border(Color("titleblue"), width: 3)
+                    .padding(.leading, 25)
+                    .padding(.trailing, 25)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+                }
+                
+            }
+            .background(.white)
+            .frame(width: 350)
+            .shadow(color: shadowpurp, radius: 15, x: 1, y: 1)
+            Spacer()
+                .frame(height: 15)
+            VStack {
+                ZStack {
+                    Image("quote")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:25)
+                        .position(x:25, y:23)
+                    Image("quote")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:25)
+                        .rotationEffect(.radians(.pi))
+                        .position(x:325, y:298)
+                    VStack {
+                        Text("Karenni Praru provides alternative education and vocational training for trainees who are mostly from IDP camps around the state. It was founded on the 4th of July of 2022, had run two batches and the third batch is ongoing. The subjects include Learning about Karenni, Kayan Literature, English Language, Computer, First Aid, Guitar, Mechanics, Handcrafts, Sewing and Dance. Karenni Praru has already given free education to 98 trainees from 17 villages of Karenni.")
+                            .foregroundColor(darkbluish)
+                            .padding(.top, 15)
+                            .padding(.bottom, 15)
+                            .padding(.leading, 15)
+                            .padding(.trailing, 15)
+                            .multilineTextAlignment(.center)
+                            .font(.system(size: 15))
+                    }
+                    .border(Color("titleblue"), width: 3)
+                    .padding(.leading, 25)
+                    .padding(.trailing, 25)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+                }
+                
+            }
+            .background(.white)
+            .frame(width: 350)
+            .shadow(color: shadowpurp, radius: 20, x: 1, y: 1)
+            header(headTitle:"")
+                .padding(.top, 10)
+            
+        }
+        .frame(width: 400)
+        .background(Color("fadedpurple"))
+    }
+}
 
 

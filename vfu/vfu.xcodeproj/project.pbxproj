@@ -16,6 +16,8 @@
 		4781248F29EC98A400BE063C /* vfuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4781248E29EC98A400BE063C /* vfuTests.swift */; };
 		4781249929EC98A400BE063C /* vfuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4781249829EC98A400BE063C /* vfuUITests.swift */; };
 		4781249B29EC98A400BE063C /* vfuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4781249A29EC98A400BE063C /* vfuUITestsLaunchTests.swift */; };
+		BBEC60B629F253420003D85F /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC60B529F253420003D85F /* MenuRow.swift */; };
+		BBEC60B829F253D20003D85F /* header.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC60B729F253D20003D85F /* header.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		4781249429EC98A400BE063C /* vfuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vfuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4781249829EC98A400BE063C /* vfuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vfuUITests.swift; sourceTree = "<group>"; };
 		4781249A29EC98A400BE063C /* vfuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vfuUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BBEC60B529F253420003D85F /* MenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = "<group>"; };
+		BBEC60B729F253D20003D85F /* header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = header.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				4781248329EC98A400BE063C /* Preview Content */,
 				3D0683EB29EF6DDB00DB7B2E /* HomeView.swift */,
 				3DC7E30929F0E5A60087F7F9 /* AboutView.swift */,
+				BBEC60B529F253420003D85F /* MenuRow.swift */,
+				BBEC60B729F253D20003D85F /* header.swift */,
 			);
 			path = vfu;
 			sourceTree = "<group>";
@@ -265,8 +271,10 @@
 			files = (
 				3DC7E30A29F0E5A60087F7F9 /* AboutView.swift in Sources */,
 				3D0683EC29EF6DDB00DB7B2E /* HomeView.swift in Sources */,
+				BBEC60B829F253D20003D85F /* header.swift in Sources */,
 				4781248029EC98A300BE063C /* ContentView.swift in Sources */,
 				4781247E29EC98A300BE063C /* vfuApp.swift in Sources */,
+				BBEC60B629F253420003D85F /* MenuRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
