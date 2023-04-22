@@ -10,11 +10,14 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
+        
         ScrollView {
             VStack {
+                MenuRow()
                 //HStacks
                 HStack {
                     BoxRow(header: "WHAT IS VFU?", description: "VFU makes learning possible for the persecuted students of Myanmar in the times of violent oppression by the military junta.")
+                    Spacer()
                     Spacer()
                     Image("Artboard_3")
                         .resizable()
@@ -27,7 +30,7 @@ struct HomeView: View {
                 
                 ZStack {
                     Rectangle()
-                        .fill(Color.purple)
+                        .fill(Color("menublue"))
                         .frame(height: 60)
                     Text("NEW SOURCES COMING SOON!")
                         .font(.system(size: 20, weight: .bold))
@@ -43,7 +46,7 @@ struct HomeView: View {
                 
                 ZStack {
                     Rectangle()
-                        .fill(Color.purple)
+                        .fill(Color("menublue"))
                         .frame(height: 60)
                     Text("WHAT'S NEWS!")
                         .font(.system(size: 20, weight: .bold))
@@ -58,7 +61,7 @@ struct HomeView: View {
                 
                 ZStack {
                     Rectangle()
-                        .fill(Color.purple)
+                        .fill(Color("menublue"))
                         .frame(height: 60)
                     Text("SUCCESS STORY")
                         .font(.system(size: 20, weight: .bold))
@@ -83,7 +86,7 @@ struct BoxNews: View {
             NewsView(color: .white, header: header, description: description)
             Spacer()
             
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 24, weight: .bold))
             Spacer()
             Text(description)
@@ -107,11 +110,11 @@ struct NewsView: View {
         VStack {
             Spacer()
             Text(header)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 24, weight: .medium))
             Spacer()
             Text(description)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 16, weight: .regular))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
@@ -135,7 +138,7 @@ struct BoxCourse: View {
             CourseView(color: .white, header: header, description: description)
             Spacer()
             
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 24, weight: .bold))
             Spacer()
             Text(description)
@@ -159,11 +162,11 @@ struct CourseView: View {
             Spacer()
             Text("Date")
             Text(header)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 24, weight: .medium))
             Spacer()
             Text(description)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 16, weight: .regular))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
@@ -172,7 +175,7 @@ struct CourseView: View {
                             Text("Sign Up Now!")
                                 .foregroundColor(.white)
                                 .padding()
-                                .background(Color.purple)
+                                .background(Color("menublue"))
                                 .cornerRadius(10)
                         }
             Spacer()
@@ -194,11 +197,11 @@ struct BoxRow: View {
             rowView(color: .white, header: header, description: description)
             Spacer()
             
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 24, weight: .bold))
             Spacer()
             Text(description)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 16, weight: .regular))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
@@ -217,20 +220,21 @@ struct rowView: View {
         VStack {
             Spacer()
             Text(header)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 24, weight: .bold))
             Spacer()
             Text(description)
-                .foregroundColor(.purple)
+                .foregroundColor(Color("menublue"))
                 .font(.system(size: 16, weight: .regular))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
+            Spacer()
             Spacer()
             Button(action: {}) {
                             Text("Find out more about VFU")
                                 .foregroundColor(.white)
                                 .padding()
-                                .background(Color.purple)
+                                .background(Color("menublue"))
                                 .cornerRadius(10)
                         }
             Spacer()

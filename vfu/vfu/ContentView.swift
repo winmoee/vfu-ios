@@ -11,99 +11,15 @@ struct ContentView: View {
     //create boolean variable and pass in boolean variable to other views
     //use content view as a main hub to call other views
     var body: some View {
-        ScrollView {
-            
-            VStack {
-                HStack {
-                    VStack {
-                        Text("Academic Strategy")
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(.purple)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                        Text("Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph  ")
-                            .font(.system(size: 15, weight: .light))
-                    }
-                    Spacer()
-                    Image("Artboard_3")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 170)
-                }
-                .padding()
-                
-                ZStack {
-                    Rectangle()
-                        .fill(Color.purple)
-                        .frame(height: 60)
-                    Text("Available Courses")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                }
-                
-                Spacer()
-                Spacer()
-                Spacer()
-                
-                BoxColumn(header: "Race and Caste", description: "In recent years, race and caste as categories of social hierarchy have increasingly been brought into conversation with one another.")
-                BoxColumn(header: "Lies my teacher told me", description: "Envisioned by Myanmar students who are currently taking part in the democracy movement from within the country, the Virtual Federal University provides a portal for ")
-                BoxColumn(header: "the best course ever", description: " faculty and students who refuse to cooperate with the Myanmar junta, as well as to those facing persecution by the regime..")
-            }
-
-        } // end of VStack
-    }
-    
-}
-
-
-
-struct BoxColumn: View {
-    let header: String
-    let description: String
-    
-    var body: some View {
-        VStack {
-            BoxView(color: .purple, header: header, description: description)
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-    }
-}
-
-struct BoxView: View {
-    let color: Color
-    let header: String
-    let description: String
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            Text(header)
-                .foregroundColor(.white)
-                .font(.system(size: 24, weight: .bold))
-            Spacer()
-            Text(description)
-                .foregroundColor(.white)
-                .font(.system(size: 16, weight: .regular))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            Spacer()
-            Button(action: {}) {
-                            Text("Find out more")
-                                .foregroundColor(.black)
-                                .padding()
-                                .background(Color.yellow)
-                                .cornerRadius(10)
-                        }
-            Spacer()
-        }
-        .background(color)
-        .cornerRadius(5)
-        .frame(maxWidth: 350, maxHeight: 300)
+        HomeView()
+        CView()
+        AboutView()
         
-            }
+        CIView(courseTitle: "Citizenship and Statelessness  ", instructor: "Natalie Brinham, Institute of Statelessness and Inclusion", numberModules: "Numbers of modules - 6", languages: "Languages - English, Burmese, Kachin, Arakan, Karenni", abstract: "This course will provide an overview of citizenship and statelessness in international contexts. Learning materials will be developed by the Institute on Statelessness and Inclusion. It is an entry level course that will provide an introduction to the issues. For those looking to extend their learning on these topics, we will provide links for materials that explore the issues in greater depth. We will utilise existing resources but will target lessons specifically to a multi-ethnic Myanmar audience and invite reflection on the relevance of the issues to the Myanmar context. The lessons will encourage critical thinking and reflection. They will cover an introduction to statelessness; citizenship and discrimination; childhood statelessness; citizenship stripping; statelessness and forced migration; and access to citizenship in Myanmar. Most learning materials will be in English. Where possible we will provide written and listening materials in Burmese. Following the release of each lesson and a self-study period, we will also be available for discussion sessions with the students. We also encourage peer-to-peer discussion of the lessons.")
+    
+
+    }
+    
 }
 
 
