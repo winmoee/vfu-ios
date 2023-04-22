@@ -11,7 +11,7 @@ import SwiftUI
 struct vfuApp: App {
     var body: some Scene {
         WindowGroup {
-            AboutView()
+            OurWork()
         }
     }
 }
