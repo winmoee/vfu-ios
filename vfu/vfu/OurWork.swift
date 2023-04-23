@@ -9,28 +9,58 @@ import Foundation
 import SwiftUI
 
 struct OurWork: View {
+    @Binding var navPath: NavigationPath
+    @Binding var showMenu: Bool
+    
     let lorem = "     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis at erat pellentesque adipiscing commodo elit at. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Porta non pulvinar neque laoreet. Id diam vel quam elementum. Tincidunt eget nullam non nisi est sit. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Condimentum vitae sapien pellentesque habitant morbi. Elit sed vulputate mi sit amet mauris commodo. Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus. Mollis aliquam ut porttitor leo a."
     
     let lorem2 = "Consectetur purus ut faucibus pulvinar elementum integer enim neque. Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Nec dui nunc mattis enim. Nibh tellus molestie nunc non. Eu nisl nunc mi ipsum faucibus vitae aliquet nec. Semper auctor neque vitae tempus quam pellentesque nec. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Vitae turpis massa sed elementum tempus egestas sed. Enim eu turpis egestas pretium aenean pharetra magna ac. Neque gravida in fermentum et sollicitudin ac orci. Posuere ac ut consequat semper."
     
     var body: some View {
         ScrollView {
-            VStack {
-                MenuRow()
-                DiffTextSection(title: "ONLINE EDUCATION", img: "onlineed", text1: lorem, text2: lorem2, side: true, textColor: .white, bgColor: Color("titleblue"))
-                        .border(.black)
-                Spacer()
-                    .frame(width: 400, height: 25)
-                    .background(Color("fadedpurple"))
-                DiffTextSection(title: "ON-THE-GROUNDS PROGRAM", img: "prg", text1: lorem, text2: lorem2, side: false, textColor: .white, bgColor: Color("titleblue"))
-                Projects()
+            ZStack {
+                VStack {
+                    DiffTextSection(title: "ONLINE EDUCATION", img: "onlineed", text1: lorem, text2: lorem2, side: true, textColor: .white, bgColor: Color("titleblue"))
+                            .border(.black)
                     Spacer()
-                    .frame(width: 400, height: 25)
-                    .background(Color("fadedpurple"))
-                DiffTextSection(title: "ACTION RESEARCH", img: "research", text1: lorem, text2: lorem2, side: true, textColor: Color("titleblue"), bgColor: .white)
-                Findings()
-                successStory()
+                        .frame(width: 400, height: 25)
+                        .background(Color("fadedpurple"))
+                    DiffTextSection(title: "ON-THE-GROUNDS PROGRAM", img: "prg", text1: lorem, text2: lorem2, side: false, textColor: .white, bgColor: Color("titleblue"))
+                    Projects()
+                        Spacer()
+                        .frame(width: 400, height: 25)
+                        .background(Color("fadedpurple"))
+                    DiffTextSection(title: "ACTION RESEARCH", img: "research", text1: lorem, text2: lorem2, side: true, textColor: Color("titleblue"), bgColor: .white)
+                    Findings()
+                    successStory()
+                        
+                }
+                
+                
+                GeometryReader { gr in
+                    VStack {
+                        MenuRow(navPath: $navPath,showMenu: $showMenu)
+                            .offset(y: gr.frame(in: .global).origin.y < 0
+                                    ? abs(gr.frame(in: .global).origin.y)
+                                    : -gr.frame(in: .global).origin.y)
+                        Spacer()
+                    }
+                }
+                
+                if showMenu {
+                    GeometryReader { gr in
+                        VStack {
+                            MenuView(navPath: $navPath, showMenu: $showMenu)
+                                .offset(y: gr.frame(in: .global).origin.y < 0
+                                        ? abs(gr.frame(in: .global).origin.y)
+                                        : -gr.frame(in: .global).origin.y)
+                                
+                            Spacer()
+                        }
+                        .padding(.top, 60)
+                    }
                     
+                }
             }
         }
     }

@@ -9,68 +9,79 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
+    @Binding var navPath: NavigationPath
+    @Binding var showMenu: Bool
+    
     var body: some View {
         
         ScrollView {
-            VStack {
-                MenuRow()
-                //HStacks
-                HStack {
-                    BoxRow(header: "WHAT IS VFU?", description: "VFU makes learning possible for the persecuted students of Myanmar in the times of violent oppression by the military junta.")
-                    Spacer()
-                    Spacer()
-                    Image("Artboard_3")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 170)
-                }.padding()
-                HStack {
-                    BoxRow(header: "WHAT WE BELIEVE?", description: "We believe education must be free, critical, and cater to the wants and needs of the learner. We work in the pursuit of these ideals with guaranteed integrity.")
-                }.padding()
+            ZStack {
+                VStack {
+                    HStack {
+                        BoxRow(header: "WHAT IS VFU?", description: "VFU makes learning possible for the persecuted students of Myanmar in the times of violent oppression by the military junta.")
+                        Spacer()
+                        Spacer()
+                        Image("Artboard_3")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 170)
+                    }.padding()
+                    HStack {
+                        BoxRow(header: "WHAT WE BELIEVE?", description: "We believe education must be free, critical, and cater to the wants and needs of the learner. We work in the pursuit of these ideals with guaranteed integrity.")
+                    }.padding()
+                    
+                    header(headTitle: "NEW COURSES COMING SOON!", fontSize: 25)
+                    HStack {
+                        BoxCourse(header: "Course Title", description: "About the Course and Course Objective").padding()
+                        BoxCourse(header: "Course Title", description: "About the Course and Course Objective").padding()
+                        BoxCourse(header: "Course Title", description: "About the Course and Course Objective").padding()
+                    }
+                    
+                    header(headTitle: "WHAT'S NEWS!", fontSize: 30)
+                   
+                    HStack {
+                        BoxNews(header: "News", description: "Details").padding()
+                        BoxNews(header: "News", description: "Details").padding()
+                        BoxNews(header: "News", description: "Details").padding()
+                    }
+                    
+                    successStory()
+                    
+                    
+                }
+                .padding(.top, 60)
                 
-                ZStack {
-                    Rectangle()
-                        .fill(Color("menublue"))
-                        .frame(height: 60)
-                    Text("NEW SOURCES COMING SOON!")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding()
+                GeometryReader { gr in
+                    VStack {
+                        MenuRow(navPath: $navPath,showMenu: $showMenu)
+                            .offset(y: gr.frame(in: .global).origin.y < 0
+                                    ? abs(gr.frame(in: .global).origin.y)
+                                    : -gr.frame(in: .global).origin.y)
+                        Spacer()
+                    }
                 }
-                HStack {
-                    BoxCourse(header: "Course Title", description: "About the Course and Course Objective").padding()
-                    BoxCourse(header: "Course Title", description: "About the Course and Course Objective").padding()
-                    BoxCourse(header: "Course Title", description: "About the Course and Course Objective").padding()
+                
+                if showMenu {
+                    GeometryReader { gr in
+                        VStack {
+                            MenuView(navPath: $navPath, showMenu: $showMenu)
+                                .offset(y: gr.frame(in: .global).origin.y < 0
+                                        ? abs(gr.frame(in: .global).origin.y)
+                                        : -gr.frame(in: .global).origin.y)
+                                
+                            Spacer()
+                        }
+                        .padding(.top, 60)
+                    }
+                    
                 }
                 
                 
-                ZStack {
-                    Rectangle()
-                        .fill(Color("menublue"))
-                        .frame(height: 60)
-                    Text("WHAT'S NEWS!")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding()
-                }
-                HStack {
-                    BoxNews(header: "News", description: "Details").padding()
-                    BoxNews(header: "News", description: "Details").padding()
-                    BoxNews(header: "News", description: "Details").padding()
-                }
                 
-                ZStack {
-                    Rectangle()
-                        .fill(Color("menublue"))
-                        .frame(height: 60)
-                    Text("SUCCESS STORY")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding()
-                }
-                Spacer()
-                //need HStack for success stories
+        
+                
             }
+           
         }
         
     }
@@ -172,12 +183,12 @@ struct CourseView: View {
                 .padding(.horizontal)
             Spacer()
             Button(action: {}) {
-                            Text("Sign Up Now!")
+                Text("Sign Up Now!")
                                 .foregroundColor(.white)
                                 .padding()
                                 .background(Color("menublue"))
                                 .cornerRadius(10)
-                        }
+                }
             Spacer()
         }
         .background(color)
@@ -231,12 +242,12 @@ struct rowView: View {
             Spacer()
             Spacer()
             Button(action: {}) {
-                            Text("Find out more about VFU")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color("menublue"))
-                                .cornerRadius(10)
-                        }
+                Text("Find out more about VFU")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color("menublue"))
+                    .cornerRadius(10)
+                }
             Spacer()
         }
         .background(color)

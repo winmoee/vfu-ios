@@ -9,18 +9,47 @@ import Foundation
 import SwiftUI
 
 struct AboutView: View {
+    @Binding var navPath: NavigationPath
+    @Binding var showMenu: Bool
     let briefText = "    Envisioned by Myanmar students who are currently taking part in the democracy movement from within the country, the Virtual Federal University provides a portal for alternative teaching and learning for faculty and students who refuse to cooperate with the Myanmar junta, as well as to those facing persecution by the regime."  +  "\n\n" + "    Content will include lectures and training on broad-based topics and skills relevant to Myanmar youth from the highlands to the plains. Intellectuals around the world will contribute to teaching on a pro-Bono basis in solidarity with the Myanmar democracy movement. The Virtual Federal University will provide online lessons in audio, video, and textual formats on a mobile friendly platform. Educational materials will also be delivered to local audiences inside Myanmar via radio and TV."
     let visionText = "We, students and educators, converge here on this portal in a collective struggle towards Myanmar federal democracy. We will hand over this place to stakeholders of the physical federal universities when they emerge in the mountains from Razis of the north to the Yomas in the west, riverbanks of Salween in the east and south, and floodplains of Irrawaddy in the heartland."
     let missionText = "The Virtual Federal University aims to provide a free, quality education for Myanmar federal democracy. We will act as a facilitator for peer-to-peer teaching and learning and to collaborate with independent universities and schools in liberated and federated areas such as Kachin, Karen, Mon, Shan, and Karenni as well as autonomous universities from the cities such as Yangon and Mandalay."
     var body: some View {
         ScrollView {
-            VStack {
-                MenuRow()
-                TextSection(switchSide: true, heights: 500, title: "BRIEF ABOUT THE VFU", img: "briefImage", text: briefText)
-                TextSection(switchSide: false, heights: 240, title: "OUR VISION", img: "visionImage", text: visionText)
-                TextSection(switchSide: true, heights: 240, title:"OUR MISSION", img: "target", text: missionText)
-                facultySection()
-                successStory()
+            ZStack {
+                VStack {
+                    TextSection(switchSide: true, heights: 500, title: "BRIEF ABOUT THE VFU", img: "briefImage", text: briefText)
+                    TextSection(switchSide: false, heights: 240, title: "OUR VISION", img: "visionImage", text: visionText)
+                    TextSection(switchSide: true, heights: 240, title:"OUR MISSION", img: "target", text: missionText)
+                    facultySection()
+                    successStory()
+                }
+                .padding(.top, 60)
+                
+                GeometryReader { gr in
+                    VStack {
+                        MenuRow(navPath: $navPath,showMenu: $showMenu)
+                            .offset(y: gr.frame(in: .global).origin.y < 0
+                                    ? abs(gr.frame(in: .global).origin.y)
+                                    : -gr.frame(in: .global).origin.y)
+                        Spacer()
+                    }
+                }
+                
+                if showMenu {
+                    GeometryReader { gr in
+                        VStack {
+                            MenuView(navPath: $navPath, showMenu: $showMenu)
+                                .offset(y: gr.frame(in: .global).origin.y < 0
+                                        ? abs(gr.frame(in: .global).origin.y)
+                                        : -gr.frame(in: .global).origin.y)
+                                
+                            Spacer()
+                        }
+                        .padding(.top, 60)
+                    }
+                    
+                }
             }
         }
     }
@@ -148,7 +177,7 @@ struct facultySection: View {
     
     var body: some View {
         VStack {
-            header(headTitle: "FACULTY MEMBERS")
+            header(headTitle: "FACULTY MEMBERS", fontSize: 30)
             Spacer()
                 .frame(height: 10)
             ForEach(names, id: \.nameOf) {

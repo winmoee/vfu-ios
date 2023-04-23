@@ -11,11 +11,12 @@ import SwiftUI
 struct header: View {
     let headerColor = Color("titleblue")
     let headTitle: String
+    let fontSize: CGFloat
     var body: some View {
         VStack {
             Text(headTitle)
                 .foregroundColor(.white)
-                .font(.system(size: 30))
+                .font(.system(size: fontSize))
                 .fontWeight(.bold)
         }
         .frame(width: 400, height: 70)

@@ -14,7 +14,7 @@ struct successStory: View {
 
     var body: some View {
         VStack {
-            header(headTitle: "SUCCESS STORY")
+            header(headTitle: "SUCCESS STORY", fontSize: 30)
                 .padding(.bottom, 10)
             VStack {
                 ZStack {
@@ -52,7 +52,7 @@ struct successStory: View {
                 
             }
             .background(.white)
-            .frame(width: 350)
+            .frame(width: 350, height: 220)
             .shadow(color: shadowpurp, radius: 15, x: 1, y: 1)
             Spacer()
                 .frame(height: 15)
@@ -88,9 +88,9 @@ struct successStory: View {
                 
             }
             .background(.white)
-            .frame(width: 350)
+            .frame(width: 350, height: 321)
             .shadow(color: shadowpurp, radius: 20, x: 1, y: 1)
-            header(headTitle:"")
+            header(headTitle:"", fontSize: 30)
                 .padding(.top, 10)
             
         }

@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct vfuApp: App {
+
+    @State var navPath = NavigationPath()
+    @State var showMenu = false
+    @State var menuOffset: CGFloat = -250
     var body: some Scene {
         WindowGroup {
-            OurWork()
+            ContentView()
         }
     }
 }
