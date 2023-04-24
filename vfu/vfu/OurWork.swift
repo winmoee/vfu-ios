@@ -12,9 +12,9 @@ struct OurWork: View {
     @Binding var navPath: NavigationPath
     @Binding var showMenu: Bool
     
-    let lorem = "     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis at erat pellentesque adipiscing commodo elit at. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Porta non pulvinar neque laoreet. Id diam vel quam elementum. Tincidunt eget nullam non nisi est sit. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Condimentum vitae sapien pellentesque habitant morbi. Elit sed vulputate mi sit amet mauris commodo. Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus. Mollis aliquam ut porttitor leo a."
+    let lorem = "The Virtual Federal University aims to provide a free, critical education for Myanmar federal democracy. Envisioned by Myanmar students who are currently taking part in the democracy movement from within the country, the Virtual Federal University provides a portal for alternative teaching and learning for faculty and students who refuse to cooperate with the Myanmar junta, as well as to those facing persecution by the regime."
     
-    let lorem2 = "Consectetur purus ut faucibus pulvinar elementum integer enim neque. Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Nec dui nunc mattis enim. Nibh tellus molestie nunc non. Eu nisl nunc mi ipsum faucibus vitae aliquet nec. Semper auctor neque vitae tempus quam pellentesque nec. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Vitae turpis massa sed elementum tempus egestas sed. Enim eu turpis egestas pretium aenean pharetra magna ac. Neque gravida in fermentum et sollicitudin ac orci. Posuere ac ut consequat semper."
+    let lorem2 = "Content will include lectures and trainings on broad-based topics and skills relevant to Myanmar youth from the highlands to the plains. Intellectuals around the world will contribute to teaching on a pro-bono basis in solidarity with the Myanmar democracy movement. The Virtual Federal University will provide online lessons in audio, video, and textual formats on a mobile-friendly platform. Educational materials will also be delivered to local audiences inside Myanmar via radio and TV. The University aims to facilitate peer to peer teaching and learning and to collaborate with independent universities and schools in liberated and federated areas such as Kachin, Karen, Mon, Shan, and Karenni as well as autonomous universities from the cities such as Yangon and Mandalay."
     
     var body: some View {
         ScrollView {
@@ -337,7 +337,7 @@ struct Findings: View {
                 Spacer()
                     .frame(width: 20)
                 VStack {
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis at erat pellentesque adipiscing commodo elit at.")
+                    Text("We, students and educators, converge here on this portal in a collective struggle towards Myanmar federal democracy. We will hand over this place to stakeholders of the physical federal universities when they emerge in the mountains from Razis of the north to the Yomas in the west, riverbanks of Salween in the east and south, and floodplains of Irrawaddy in the heartland. Please join our journey.")
                         .foregroundColor(Color("titleblue"))
                         .font(.system(size: 16))
                     CustomButton(buttonText: "Download")
